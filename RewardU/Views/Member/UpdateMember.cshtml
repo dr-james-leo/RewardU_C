@@ -1,0 +1,186 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>My Details</title>
+    <!-- Stylesheets -->
+    <script src="~/Scripts/RewardU_Angular/Controllers/IndexApiController.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Services/IndexPageServices.js"></script>
+   <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/css/bootstrap-switch.css' rel='stylesheet' type='text/css'>
+ <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+ <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/js/bootstrap-switch.min.js' type='text/javascript'></script>
+  
+</head>
+<body>
+    
+    <div class='container' ng-controller="UpdateMemberController" style="margin-top:70px;">
+        <div class='panel panel-primary dialog-panel' ng-init="getUserAddressDetails()">
+
+            <div class='panel-body'>
+                <form class='form-horizontal' role='form'>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Email</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <label class='form-control' id='id_email' placeholder='E-mail' type='text' >{{usersAddress.userName}}</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Password</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='Password' type='password' ng-model="usersAddress.Password">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Confirm Password</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='Confirm Password' type='password' ng-model="usersAddress.ConfirmPassword">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_phone'>Mobile Number</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_phone' ng-minlength="10" ng-maxlength="13" placeholder='Phone:(xxx)-xxx xxxx' type='text' ng-model="usersAddress.mobileNumber">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2'>Forename</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_Forename' placeholder='Forename' type='text' ng-model="usersAddress.firstName">
+                                </div>
+                            </div>
+
+                            <label class='control-label col-md-2' style="padding-right:9px;">Surname</label>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_Surname' placeholder='Surname' type='text'style="padding-right: 12px; border-right-width: 1px; margin-left: 4px;" ng-model="usersAddress.lastName">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_House'>House/Street</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_House' placeholder='House/Street' type='text' ng-model="usersAddress.address1">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_Locality'>Locality</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_Locality' placeholder='Locality' type='text' ng-model="usersAddress.address2">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Town</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='Town' type='text' ng-model="usersAddress.city">
+                                </div>
+                            </div>
+                            <label class='control-label col-md-2' for='id_checkout'>PostCode</label>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control'  style="padding-right: 12px; border-right-width: 1px; margin-left: 4px;" id='id_last_name' placeholder='PostCode' type='text' ng-model="usersAddress.postCode">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2'  for='id_Gender'>Gender</label>
+                        <div class='col-md-8'>
+                            <div class="radio">
+                                <label><input type="radio" name="gender" value="male" ng-model="usersAddress.gender">Male</label>
+
+
+                                <label><input type="radio" name="gender" value="female" ng-model="usersAddress.gender">Female</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_service'>AgeRange</label>
+                        <div class='col-md-8 form-group'>
+                            <select class="dropdown" id='id_service' ng-model="usersAddress.ageRange" style="margin-left:21px">
+
+                                <option value="0-20">0-20</option>
+                                <option value="21-30">21-30</option>
+                                <option value="opel">31-40</option>
+                                <option value="31-40">41-50</option>
+                                <option value="51-60">51-60</option>
+                                <option value="61-70">61-70</option>
+                                <option value="71-80">71-80</option>
+
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <div class='col-md-8'>
+                            
+                            <input id="Register" ng-click="UpdateAddressDetails()" type="submit" value="Update" class="btn btn-success pull-right" style="background-color:rgb(224,242,224);padding-bottom:8px; border-color:white;margin-bottom:45px;color:black;padding-right: 55px; padding-left: 55px;margin-top:-33px" />
+                         </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+@section scripts
+{
+    <script>
+        $(function () {
+            $("#title_content h2").text($(document).find("title").text());
+        });
+        $(document).ready(function () {
+            $("#btnBack").click(function () {
+                window.open('/Member/Index', '_self');
+            });
+        });
+    </script>
+}

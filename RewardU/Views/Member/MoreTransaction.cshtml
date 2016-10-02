@@ -1,0 +1,54 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br />
+<html>
+<head>
+    <title>Transactions</title>
+    <script src="~/Scripts/RewardU_Angular/Controllers/IndexApiController.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Services/IndexPageServices.js"></script>
+
+</head>
+<body>
+    <div class="tab_content" ng-controller="TransactionMoreController" ng-init="getMoretransactionDetails()">
+        <table class="table table-striped" title="">
+            <thead style="background-color:rgb(224,242,224);color:black;">
+                <tr>
+                    <th>Transaction Id</th>
+                    <th>Retailer</th>
+                    <th>Date</th>
+                    <th>Transaction Amount</th>
+                    <th>Points</th>
+                    <th>Status</th>
+                    <th>Status Date</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="transctionItem in alltransaction">
+
+                <tr>
+                    <td>{{transctionItem.transactionId}}</td>
+                    <td>{{transctionItem.mechant}}</td>
+                    <td>{{transctionItem.Date}}</td>
+                    <td>{{transctionItem.amount}}</td>
+                    <td>{{transctionItem.point}}</td>
+                    <td>{{transctionItem.status}}</td>
+                    <td>{{transctionItem.LastUpdate}}</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $("#btnBack").click(function () {
+        window.open('/Member/Index', '_self');
+    });
+    $(function () {
+        $("#title_content h2").text($(document).find("title").text());
+    });
+</script>
+

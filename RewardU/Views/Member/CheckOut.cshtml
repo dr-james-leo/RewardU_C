@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br /><br />
+<head>
+    <script src="~/Scripts/RewardU_Angular/Controllers/IndexApiController.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Services/IndexPageServices.js"></script>
+
+    <style type="text/css">
+        .content {
+            display: none;
+        }
+
+        .preload {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<div class="preload center">
+    <img src="http://i.imgur.com/KUJoe.gif">
+</div>
+<div class="content container col-md-12 col-lg-12 col-sm-12" style="margin-left:120px;">
+    <div class="col-md-6 col-sm-6 col-lg-6" style="border-right:1px solid #eeeeee;height:500px;" ng-controller="UpdateMemberController">
+        <div>
+            <h2>Please confirm the delivery Address </h2>
+        </div>
+        <div ng-init="getUserAddressDetails()">
+            <div class="form-group required">
+                <label class="control-label col-md-4" for="FirstName">Title</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line"  type="text" ng-model="usersAddress.Title">
+                </div>
+            </div>
+            <br />
+            <div class="form-group required">
+                <label class="control-label col-md-4" for="FirstName">Surname</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" type="text" ng-model="usersAddress.lastName">
+                </div>
+            </div>
+            <br/>
+            <div class="form-group required">
+                <label class="control-label col-md-4" for="Address_AddressLine1">House,Street</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Address Line1 must be a string with a maximum length of 40." data-val-length-max="40" id="Address_AddressLine1" ng-model="usersAddress.address1" type="text">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-md-4" for="Address_AddressLine2">Locality</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Address Line2 must be a string with a maximum length of 40." data-val-length-max="40" id="Address_AddressLine2" ng-model="usersAddress.address2" type="text">
+                </div>
+            </div>
+            <br>
+            <div class="form-group required">
+                <label class="control-label col-md-4 required" for="Address_Town">Town,County</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Post Town must be a string with a maximum length of 50." data-val-length-max="50" id="Address_Town" ng-model="usersAddress.city" type="text">
+                </div>
+            </div>
+            <br>
+            <div class="form-group required">
+                <label class="control-label col-md-4" for="Address_Country">Postcode</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Country must be a string with a maximum length of 30." data-val-length-max="30" id="Address_Country" ng-model="usersAddress.postCode" type="text">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <label class="control-label col-md-4" for="Address_PostCode">Country</label>
+                <div class="col-md-8">
+                    <input class="form-control text-box single-line" data-val="true" data-val-length="The field Postcode must be a string with a maximum length of 9." data-val-length-max="9" id="Address_PostCode" ng-model="usersAddress.country" type="text">
+                </div>
+            </div>
+            <br><br>
+            <div class="form-group">
+                <input type="submit" value="Confirm" class="btn btn-lg btn-default pull-right" ng-click="UpdateUserAddressDetails()">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-lg-6" ng-controller="CartApiController">
+        <div style="width:100%;border-bottom:1px solid #eeeeee;width:100%;">
+            <table align="center">
+                <tr>
+                    <td width="50%">
+                        <h3>ITEM</h3>
+                    </td>
+                    <td width="50%" style="text-align:right;">
+                        <h3>QTY</h3>
+                    </td>
+                </tr>
+                <tr ng-repeat="Cart in Carts">
+                    <td>
+                        {{Cart.productName}}
+                    </td>
+                    <td style="text-align:right;">
+                        {{Cart.quantity}}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br /><br />
+        <div>
+            <table align="right">
+                <tr>
+                    <td style="width:60%">
+                        <h4>Basket Sub-Total</h4>
+                    </td>
+                    <td style="width:40%;text-align:right">
+                        {{TotalAmount}}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Delivery</h4>
+                    </td>
+                    <td style="text-align:right">
+                        0
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Total</h4>
+                    </td>
+                    <td style="text-align:right">
+                        <p id="totalAmount">{{TotalAmount}}</p>
+                    </td>
+                </tr>
+                <tfoot>
+                    <tr style="text-align:right">
+                        <td colspan="2">
+                            <input type="submit" value="BUY" class="btn btn-default btn-sm" ng-click="AddToBuy()" />
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+@section scripts
+{
+    <script>
+      $(document).ready(function () {
+          $(function () {
+              $(".preload").fadeOut(2000, function () {
+                  $(".content").fadeIn(1000);
+              });
+          });
+          $("#btnBack").click(function () {
+              window.open('/Member/Basket', '_self');
+          });
+          $("#balanceToSpend").show();
+      });
+      $(function () {
+          $("#title_content h2").text($(document).find("title").text());
+      });
+    </script>
+}
+
+
+
+

@@ -1,0 +1,67 @@
+﻿
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- Stylesheets -->
+    <link href="../../Scripts/RegistrationPage/css/style.css" rel="stylesheet" />
+    <link href="../../Scripts/RegistrationPage/css/set1.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
+
+    <link href="../../CSS/CreateUser.css" rel="stylesheet" />
+    </head>
+<body>
+    <div id="main-wrapper" ng-controller="CreateUserController">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 left-side">
+                    <header>
+                        <span>Need and account?</span>
+                        <h3>Create Account<br>Make Profits</h3>
+                    </header>
+                </div>
+                <div class="col-md-6 right-side">
+
+
+                    <span class="input input--hoshi">
+                        <input class="input__field input__field--hoshi" type="password" id="username" ng-model="createuserobj.UserName" />
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="username">
+                          <label>UserName</label>
+                        </label>
+                    </span>
+                    <span class="input input--hoshi">
+                        <input class="input__field input__field--hoshi" type="password" id="password" ng-model="createuserobj.PassWord" />
+                        <label class="input__label input__label--hoshi input__label--hoshi-color-3" for="password">
+                            <label>PassWord</label>
+                          
+                        </label>
+                    </span>
+                    <div class="cta">
+                        <button class="btn btn-primary pull-left" ng-click="createUser()">
+                            Login
+                        </button>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+    </div> <!-- end #main-wrapper -->
+    <!-- Scripts -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="../../Scripts/RegistrationPage/js/scripts.js"></script>
+    <script src="../../Scripts/RegistrationPage/js/classie.js"></script>
+</body>
+</html>

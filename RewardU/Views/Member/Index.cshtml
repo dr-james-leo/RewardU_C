@@ -1,0 +1,199 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<body ng-controller="IndexApiController">
+    <style type="text/less">
+        .tab_wrapper > ul li {
+            padding: 1px 200px;
+        }
+    </style>
+    <div  id="slides_control" ng-init="getBannersDetails()">
+        <div>
+            <carousel interval="myInterval">
+                <slide ng-repeat="slide in banners" active="slide.active">
+                    <a ng-href="{{slide.redirectUrl}}" target="_blank">
+                        <img ng-src="{{slide.imageUrl}}" border="0" style="width:1300px;height:100px;" />
+                    </a> 
+                </slide>
+            </carousel>
+        </div>
+    </div>
+   
+    <br /><br />
+   
+    <div class="container" ng-init="getAccountDetails();getAwTransactionDetails();getOrdertotalList()">
+        <div class="row" style="padding-left:20px;padding-right:10px;">
+            <div class="col-xs-3 ">
+                <div class="fa fa-download fa-4x" style="float:left;"></div>
+
+                <h5 style="margin-left:7px"><input type="button" style="margin-left:7px;" id="BrowserExtension_Download" target='_blank' value="download" class="btn btn-success" /></h5>
+                <input type="button" id="btnBrowserExtension_Redirect" class="hidden" />
+                <p>
+                    <h4 style="margin-top: 20px;">Browser Extension</h4>
+                    <h6>BrowserId:{{accountdetails.BrowserName}}</h6>
+                    <h6>Date:{{accountdetails.DownloadDate}}</h6>
+                    <h6>TotalDownloaded:{{accountdetails.TotalDownloaded}}</h6>
+                </p>
+            </div>
+            <div class="col-xs-3 text-left fa fa-balance-scale fa-4x">
+                <p>
+                    <h4>Points Balance</h4>
+                    <h6>Confirmed:{{accountdetails.ConfirmedCount}}</h6>
+                    <h6>Pending:{{accountdetails.PendingCount}}</h6>
+                </p>
+            </div>
+            <div class="col-xs-3 text-left fa fa-line-chart fa-4x">
+                <p>
+                    <h4>Transaction Status</h4>
+                    <h6>Pending:{{accountdetails.PendingStatusCount}}</h6>
+                    <h6>Declined:{{accountdetails.DeclienedStatusCount}}</h6>
+                </p>
+            </div>
+
+            <div class="col-xs-3">
+
+                <br /><br />
+                <div>
+                    <a href="@Url.Action("UpdateMember","Member")" class="btn btn-default pull-left" style="margin-right:5px;background-color:rgb(224,242,224);">Update user details</a>
+                </div>
+                <br /><br /><br />
+                <div>
+                    @Html.ActionLink("Gift Store", "GiftStore", "Member", new { @class = "btn btn-default", @id = "giftstore", @style = "background-color:rgb(224,242,224)" })
+                </div>
+            </div>
+            <br /><br /><br />
+            <div class="tab_wrapper demo">
+                <ul class="tab_list" title="">
+                    <li class="active">Transactions</li>
+                    <li>Orders</li>
+
+
+                </ul>
+                <div class="content_wrapper">
+                    <div class="tab_content">
+
+                        <table class="table table-striped" title="">
+                            <thead style="background-color:rgb(224,242,224);color:black;">
+                                <tr>
+                                    <th>Transaction Id</th>
+                                    <th>Retailer</th>
+                                    <th>Date</th>
+                                    <th>Transaction Amount</th>
+                                    <th>Points</th>
+                                    <th>Status</th>
+                                    <th>Status Date</th>
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="transctionItem in awtransaction">
+                                   
+                                        <tr>
+                                            <td>{{transctionItem.transactionId}}</td>
+                                            <td>{{transctionItem.mechant}}</td>
+                                            <td>{{transctionItem.Date}}</td>
+                                            <td>{{transctionItem.amount}}</td>
+                                            <td>{{transctionItem.point}}</td>
+                                            <td>{{transctionItem.status}}</td>
+                                            <td>{{transctionItem.LastUpdate}}</td>
+                                        </tr>
+                                   
+                                </tbody>
+
+                        </table>
+                        <div class="pull-right">
+                            <a href="~/Member/moretransaction" class="btn btn-default" title="" style="background-color:rgb(224,242,224);">More</a>
+                        </div>
+                    </div>
+                    <div class="tab_content" title="">
+                        <table class="table table-striped" title="">
+                            <thead style="background-color:rgb(224,242,224);color:black;">
+                                <tr>
+
+                                    <th>Order Ref</th>
+                                    <th>Line Item</th>
+                                    <th>Order Date</th>
+                                    <th>Points</th>
+                                    <th>Status</th>
+                                    <th>Status Date</th>
+
+                                </tr>
+                            </thead>
+                            <tbody ng-repeat="orderlist in orders">
+
+                                <tr>
+
+                                    <td>{{orderlist.OrderReferenceNoInAnOrder}}</td>
+                                    <td>{{orderlist.OrdersDetails[0].LineItem}}</td>
+                                    <td>{{orderlist.OrderDate}}</td>
+                                    <td>{{orderlist.TotalPoints}}</td>
+                                    <td>{{orderlist.Orderstatus}}</td>
+                                    <td>{{orderlist.OrderDate}}</td>
+                                </tr>
+
+
+                            </tbody>
+
+
+
+                        </table>
+                        <div class="pull-right">
+                            <a href="#" class="btn btn-default" title="" style="background-color:rgb(224,242,224);">More</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                @*<p style="margin-top:20px;margin-bottom:0;">If you didn't download the chrome extension pls click the below link to download chrome extension</p>
+                    <a id="linkDownload" onclick="download();" href="https://chrome.google.com/webstore/detail/tesmedia-fanreward/pkiapancnkgldbgipneiifcphjjobkcl" target='_blank'>Download Link</a>*@
+            </div>
+        </div>
+
+    </div>
+</body>
+@section scripts
+{
+
+<script src="~/Scripts/Accordian/jquery.multipurpose_tabcontent.js"></script>
+<link href="~/Scripts/Accordian/style.css" rel="stylesheet" />
+<a href="~/Scripts/Accordian/style.css.map">~/Scripts/Accordian/style.css.map</a>
+<script src="~/Scripts/RewardU_Angular/Controllers/IndexApiController.js"></script>
+<script src="~/Scripts/RewardU_Angular/Services/IndexPageServices.js"></script>
+
+@*<link href="~/Scripts/RewardU_Angular/CSS/myCarouselimage_index.css" rel="stylesheet" />*@
+    <script>
+
+        $(document).ready(function ()
+        {
+            $(".demo").champ({
+                active_tab: "1"
+            });
+            $("#cart").css("visibility", "hidden");
+            $("#btnBack").css("visibility", "hidden");
+            $('#BrowserExtension_Download').click(function () {
+                $.post("/MemberDetails/MemberBrowserExtensionDownload",
+            function (data) {
+                if (data != "") {
+                    $("#btnBrowserExtension_Redirect").trigger("click");
+                }
+                else {
+                    alert("Currently You are not using a supported browser.Use  Google Chrome to download this extension. ");
+                }
+              });
+            });
+
+            $('#BrowserExtension_Download').on("click", (function () {
+                window.open('https://chrome.google.com/webstore/detail/tesmedia-fanreward/pkiapancnkgldbgipneiifcphjjobkcl', '_blank');
+            }));
+
+            $("#dLabel li").on("click", function () {
+                var url = "/MemberDetails/RetailorsView?category=" + $(this).text()
+                window.location.href = url;
+            });
+
+            $('.carousel-inner').find('div').first().addClass("active");
+            $("#ddlRetailors").show();
+            $("#SchemeName").show();
+        });
+    </script>
+}

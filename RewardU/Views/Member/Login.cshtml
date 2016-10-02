@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "~/Views/Shared/_commonLayout.cshtml";
+}
+<html lang="en">
+ <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <!-- Stylesheets -->
+    <script src="~/Scripts/RewardU_Angular/Controllers/LoginUserController.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Services/LoginUserService.js"></script>
+    <link href="~/Scripts/RewardU_Angular/CSS/Login.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Scripts/RegistrationPage/js/classie.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Scripts/RegistrationPage/js/scripts.js"></script>
+   
+  
+ 
+</head>
+<body>
+    <div class="header header-logged-out width-full" role="banner" style="padding-top:38px;padding-bottom:38px;background-color: rgb(89,89,89); width:100%">
+        <div class="auth-form-header">
+            <h1 style="color:white;margin-left:495px;margin-top:0px;">RewardU - Member Signin</h1>
+        </div>
+    </div>
+    <br /><br /><br />
+        <div class="container" ng-controller="LoginUserController">
+            <section id="content">
+                <form>
+                    <h1>Login Form</h1>
+                    <div>
+                        <input type="text" placeholder="Username"  id="username" ng-model="loginuserobj.UserName" />
+                    </div>
+                    <div>
+                        <input type="password" placeholder="Password"  id="password" ng-model="loginuserobj.PassWord" />
+                    </div>
+                    <div>
+                        <span us-spinner="{radius:30, width:8, length: 16}"></span>
+                        <button class="ui-spinner-button" type="submit" value="Log in"  style="background-color:rgb(224,242,224);background-image:none;border-color:white;margin-right: 84px;margin-top: 18px;margin-left: -32px;padding-top: 10px;padding-bottom: 12px;padding-right: 20px;padding-left: 22px;" required ng-init="button=true" ng-click="loginUser()">LogIn</button>
+                        <a href="#">Forgot&nbsp;Password?</a>       
+                    </div>
+                </form><!-- form -->
+                <div >
+                    <a href="~/Member/Register">Need to Register?</a>
+                </div><!-- button -->
+            </section><!-- content -->
+        </div><!-- container -->
+</body>
+</html>

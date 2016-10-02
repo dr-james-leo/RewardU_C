@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Basket";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br /><br /><br />
+<head>
+    <script src="~/Scripts/RewardU_Angular/Controllers/IndexApiController.js"></script>
+    <script src="~/Scripts/RewardU_Angular/Services/IndexPageServices.js"></script>
+   <style type="text/css">
+        .content {
+            display: none;
+        }
+
+        .preload {
+            width: 100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+        }
+    </style>
+</head>
+<div class="preload center">
+    <img src="http://i.imgur.com/KUJoe.gif">
+</div>
+<div class="content container" ng-controller="CartApiController" style="background-color:azure;">
+    <div class="row pull-left col-sm-12 col-lg-12 col-md-12" ng-repeat="Cart in Carts">
+        <div class="col-sm-10 col-lg-10 col-md-10" style="border-top:1px solid #eeeeee;width:100%;">
+            <br />
+            <div class="col-sm-2 col-md-2 col-lg-2 pull-left">
+                <img ng-src="{{Cart.imageUrl}}" width="100" height="100" />
+            </div>
+            <div class="col-sm-10 col-lg-10 col-md-10">
+                <div class="top">
+                    <div class="pull-left">
+                        <h3>{{Cart.productName}}</h3>
+                    </div>
+                    <div class="pull-left" style="margin-top: 22px;margin-left:20px;">
+                        @*<select ng-model="quantity" ng-change="UpdateFromCart(Cart.cartLineItemId,quantity)">
+                                <option ng-repeat="item in Options" value="{{item.id}}" ng-if="">
+                                    {{item.value}}
+                                </option>
+                            </select>*@
+                        @*<input type="text" ng-model="Cart.quantity" class="col-lg-4" ng-change="UpdateFromCart(Cart.cartLineItemId,Cart.quantity)"/>*@
+                    </div>
+                    <div class="pull-right">
+                        <div style="float:left;margin-right:10px;">
+                            <p>Quantity</p>
+                        </div>
+                        <div>
+                            @*<input type="text" ng-model="Cart.quantity" class="col-lg-4" ng-change="UpdateFromCart(Cart.cartLineItemId,Cart.quantity)" />*@
+                            <select ng-model="Cart.quantity" ng-change="UpdateFromCart(Cart.cartLineItemId,Cart.quantity,Cart.minQuantity,Cart.maxQuantity)">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br /><br /><br />
+                <div class="bottom">
+                    <div class="pull-left" style="margin-right:80px;">
+                        <p style="color:chocolate">{{Cart.listPrice*Cart.quantity}}</p>
+                    </div>
+                    <div>
+                        {{Cart.productDescription}}
+                    </div>
+                    <div class="pull-right">
+                        <a href="#" class="btn btn-danger" ng-click="RemoveFromCart(Cart.cartLineItemId)">
+                            Remove
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <br />
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+      $(document).ready(function () {
+          $(function () {
+              $(".preload").fadeOut(2000, function () {
+                  $(".content").fadeIn(1000);
+              });
+          });
+          $("#btnCheckOut").show();
+          $("#balanceToSpend").show();
+          $("#btnBack").click(function () {
+              window.open('/Member/GiftStore', '_self');
+          });
+          $("#totalBasket").show();
+      });
+      $(function () {
+          $("#title_content h2").text($(document).find("title").text());
+      });
+    </script>
+}
+
+

@@ -1,0 +1,179 @@
+﻿@{
+    Layout = "~/Views/Shared/_commonLayout.cshtml";
+}
+<html>
+<head>
+    @*<link href='http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css' rel='stylesheet' type='text/css'>*@
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/css/datepicker.min.css' rel='stylesheet' type='text/css'>
+    <link href='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/css/bootstrap-switch.css' rel='stylesheet' type='text/css'>
+    @*<link href='http://davidstutz.github.io/bootstrap-multiselect/css/bootstrap-multiselect.css' rel='stylesheet' type='text/css'>*@
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js' type='text/javascript'></script>
+    <script src="~/Scripts/RewardU_Angular/Controllers/CreateUserController.js"></script>
+
+    <script src="~/Scripts/RewardU_Angular/Services/CreateUserService.js"></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/bootstrap-switch/1.8/js/bootstrap-switch.min.js' type='text/javascript'></script>
+    @*<script src='http://davidstutz.github.io/bootstrap-multiselect/js/bootstrap-multiselect.js' type='text/javascript'></script>*@
+</head>
+
+<body>
+    <div class="header header-logged-out width-full" role="banner" style="overflow:hidden;margin-top:-50px; padding-bottom:30px;background-color: rgb(89,89,89); width:100%">
+        <div class="auth-form-header">
+            <h1 style="color:white;margin-left:425px;margin-top:0px;">RewardU - Member Registration</h1>
+        </div>
+    </div>
+    <div class='container' ng-controller="CreateUserController">
+        <div class='panel panel-primary dialog-panel'>
+
+            <div class='panel-body'>
+                <form class='form-horizontal' role='form'>
+
+                    <div class="form-group required">
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Email</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='E-mail' type='text' ng-model="registeruserobj.Email">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Password</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='Password' type='password' ng-model="registeruserobj.Password">
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="form-group required">
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Confirm Password</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='Confirm Password' type='password' ng-model="registeruserobj.ConfirmPassword">
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_email'>Mobile Number</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_email' placeholder='Phone:0xxxx xxxxxx' ng-minlength="10" ng-maxlength="13" type='text' ng-model="registeruserobj.MobileNumber">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2'>Forename</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <span us-spinner="{radius:30, width:8, length: 16}"></span>
+                                    <input class='form-control' id='id_Forename' placeholder='Forename' type='text' ng-model="registeruserobj.Forename">
+                                </div>
+                            </div>
+                          
+                            <label class='control-label col-md-2' style="padding-right:13px;">Surname</label>
+                            <div class='col-md-3 indent-small' >
+                                <div class='form-group internal' style="margin-right:-19px">
+                                    <input class='form-control' id='id_Surname' placeholder='Surname' type='text' ng-model="registeruserobj.Surname">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_House'>House/Street</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_House' placeholder='House/Street' type='text' ng-model="registeruserobj.House">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_Locality'>Locality</label>
+                        <div class='col-md-6'>
+                            <div class='form-group'>
+                                <div class='col-md-11'>
+                                    <input class='form-control' id='id_Locality' placeholder='Locality' type='text' ng-model="registeruserobj.Locality">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_checkin'>Town</label>
+                        <div class='col-md-8'>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal'>
+                                    <input class='form-control' id='id_first_name' placeholder='Town' type='text' ng-model="registeruserobj.Town">
+                                </div>
+                            </div>
+                            <label class='control-label col-md-2' for='id_checkout'>PostCode</label>
+                            <div class='col-md-3 indent-small'>
+                                <div class='form-group internal' style="margin-right:-19px">
+                                    <input class='form-control' style="padding-left: 12px;" id='id_last_name' placeholder='PostCode' type='text' ng-model="registeruserobj.Postcode">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_Gender'>Gender</label>
+                        <div class='col-md-8'>
+                            <div class="radio">
+                                <label><input type="radio" name="gender" value="male" ng-model="registeruserobj.Gender">Male</label>
+
+
+                                <label><input type="radio" name="gender" value="female" ng-model="registeruserobj.Gender">Female</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class='form-group'>
+                        <label class='control-label col-md-2 col-md-offset-2' for='id_service'>AgeRange</label>
+                        <div class='col-md-8 form-group'>
+                            <select class="dropdown" id='id_service' ng-model="registeruserobj.ageRange" style="margin-left:21px">
+
+                                <option value="0-20">0-20</option>
+                                <option value="21-30">21-30</option>
+                                <option value="opel">31-40</option>
+                                <option value="31-40">41-50</option>
+                                <option value="51-60">51-60</option>
+                                <option value="61-70">61-70</option>
+                                <option value="71-80">71-80</option>
+
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class='form-group'>
+                        <div class='col-md-8'>
+                            <a href="~/Member/Login"><h4 style="margin-left:270px;margin-right:66px">Already have an account?</h4></a>
+                            <button class='pull-right btn' ng-click="createUser()" style="float:right;margin-top:-35px; background-color:rgb(224,242,224);padding-bottom:8px; border-color:white" value="Join" type='submit'>Join</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
